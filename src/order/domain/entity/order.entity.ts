@@ -31,7 +31,7 @@ export class Order {
     @Column({ nullable: true })
     shippingAddressSetAt: Date | null;
 
-    @Column({ nullable: true })
+    @Column({ nullable: false })
     status: 'CART' | 'SHIPPING_ADDRESS_SET' | 'PAID' = 'CART';
 
     @Column({ nullable: true })
