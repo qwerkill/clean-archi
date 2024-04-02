@@ -32,7 +32,7 @@ export class Order {
     shippingAddressSetAt: Date | null;
 
     @Column({ nullable: true })
-    status: string ;
+    status: 'CART' | 'SHIPPING_ADDRESS_SET' | 'PAID' = 'CART';
 
     @Column({ nullable: true })
     paidAt: Date | null;
