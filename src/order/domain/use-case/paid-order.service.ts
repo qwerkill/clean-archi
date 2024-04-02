@@ -1,3 +1,4 @@
+import { OrderStatus } from "../entity/order.entity";
 import { OrderRepositoryInterface } from "../port/order.repository.interface";
 
 export class PaidOrderService {
@@ -9,7 +10,7 @@ async update(orderId: string): Promise<void> {
     if (order.status !== 'SHIPPING_ADDRESS_SET') {
     throw new Error('Shipping address is not set');
     }
-    order.status = 'PAID';
+    order.status = OrderStatus.PAID;
     order.paidAt = new Date();
     await this.orderRepository.save(order);
     }

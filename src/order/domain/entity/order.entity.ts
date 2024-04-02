@@ -7,7 +7,7 @@ export class Order {
     constructor(customerName: string, oderItems: OrderItem[]) {
         this.customerName = customerName;
         this.orderItems = oderItems;
-        this.status = 'CART';
+        this.status = OrderStatus.CART;
     }
 
     @PrimaryGeneratedColumn()
@@ -32,7 +32,7 @@ export class Order {
     shippingAddressSetAt: Date | null;
 
     @Column({ nullable: false })
-    status: 'CART' | 'SHIPPING_ADDRESS_SET' | 'PAID' = 'CART';
+    status: OrderStatus = OrderStatus.CART;
 
     @Column({ nullable: true })
     paidAt: Date | null;
@@ -55,8 +55,14 @@ export class Order {
             throw new Error('Shipping address is too long');
         }
 
-        this.status = 'SHIPPING_ADDRESS_SET';
+        this.status = OrderStatus.SHIPPING_ADDRESS_SET;
         this.shippingAddress = shippingAddress;
         this.shippingAddressSetAt = new Date();
     }
+}
+
+export enum OrderStatus {
+    CART = 'CART',
+    SHIPPING_ADDRESS_SET = 'SHIPPING_ADDRESS_SET',
+    PAID = 'PAID',
 }
