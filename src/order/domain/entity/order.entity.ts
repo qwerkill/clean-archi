@@ -1,6 +1,6 @@
 import { OrderItem } from "src/order/domain/entity/order-item.entity";
 import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
- 
+import { OrderStatus } from "../enum/order-status.enum";
 @Entity('order')
 export class Order {
 
@@ -32,7 +32,7 @@ export class Order {
     shippingAddressSetAt: Date | null;
 
     @Column({ nullable: false })
-    status: OrderStatus = OrderStatus.CART;
+    status: OrderStatus ;
 
     @Column({ nullable: true })
     paidAt: Date | null;
@@ -61,8 +61,3 @@ export class Order {
     }
 }
 
-export enum OrderStatus {
-    CART = 'CART',
-    SHIPPING_ADDRESS_SET = 'SHIPPING_ADDRESS_SET',
-    PAID = 'PAID',
-}

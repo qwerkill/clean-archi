@@ -1,4 +1,4 @@
-import { OrderStatus } from "../entity/order.entity";
+import { OrderStatus } from "../enum/order-status.enum";
 import { OrderRepositoryInterface } from "../port/order.repository.interface";
 
 export class PaidOrderService {
