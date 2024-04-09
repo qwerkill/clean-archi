@@ -59,5 +59,13 @@ export class Order {
         this.shippingAddress = shippingAddress;
         this.shippingAddressSetAt = new Date();
     }
+
+    pay (): void {
+        if (this.status !== OrderStatus.SHIPPING_ADDRESS_SET) {
+            throw new Error('Shipping address is not set');
+        }
+        this.status = OrderStatus.PAID;
+        this.paidAt = new Date();
+    }
 }
 

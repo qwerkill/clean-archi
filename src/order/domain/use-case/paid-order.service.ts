@@ -1,17 +1,16 @@
-import { OrderStatus } from "../enum/order-status.enum";
+import { Order } from "../entity/order.entity";
 import { OrderRepositoryInterface } from "../port/order.repository.interface";
 
 export class PaidOrderService {
 constructor(
 private readonly orderRepository : OrderRepositoryInterface
 ) {}
-async update(orderId: string): Promise<void> {
+async paidOrder(orderId: string): Promise<Order> {
     const order = await this.orderRepository.findById(orderId);
-    if (order.status !== 'SHIPPING_ADDRESS_SET') {
-    throw new Error('Shipping address is not set');
+    if (!order) {
+    throw new Error('Order not found');
     }
-    order.status = OrderStatus.PAID;
-    order.paidAt = new Date();
-    await this.orderRepository.save(order);
+   order.pay();
+   return order;
     }
 }
