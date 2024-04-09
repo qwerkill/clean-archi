@@ -1,6 +1,6 @@
 import { InjectDataSource } from '@nestjs/typeorm';
-import { Order } from 'src/order/domain/entity/order.entity';
-import { OrderRepositoryInterface } from 'src/order/domain/port/order.repository.interface';
+import { Order } from '../../order/domain/entity/order.entity';
+import { OrderRepositoryInterface } from '../../order/domain/port/order.repository.interface';
 import { DataSource, Repository } from 'typeorm';
 
 export default class OrderRepository
@@ -39,9 +39,5 @@ export default class OrderRepository
     queryBuilder.where('order.id = :id', { id });
 
     await queryBuilder.delete().execute();
-  }
-
-  async createOrder(order: Order): Promise<Order> {
-    return this.save(order);
   }
 }

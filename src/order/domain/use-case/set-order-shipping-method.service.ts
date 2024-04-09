@@ -4,7 +4,7 @@ import { Order } from "../entity/order.entity";
 export class SetOrderShippingMethodService {
     constructor(private orderRepository) {}
 
-    async update (SetOrderShippingAdressDto: SetOrderShippingAdressDto): Promise<Order> {
+    async setShippingMethod (SetOrderShippingAdressDto: SetOrderShippingAdressDto): Promise<Order> {
         const order = await this.orderRepository.findById(SetOrderShippingAdressDto.orderId);
         
         if (!order) {
