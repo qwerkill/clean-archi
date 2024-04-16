@@ -16,7 +16,7 @@ describe('Paid Order', () => {
         },
     } as unknown as OrderRepositoryInterface;
     
-    order.status = OrderStatus.SHIPPING_ADDRESS_SET;
+    order.setShippingMethod('123 Main St');
     
     it('should Paid Order', async () => {
         const paidOrderService = new PaidOrderService(
