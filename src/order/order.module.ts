@@ -10,7 +10,7 @@ import { SetOrderShippingMethodService } from './domain/use-case/set-order-shipp
 import { PaidOrderService } from './domain/use-case/paid-order.service';
 import { RemoveOrderService } from './domain/use-case/remove-order.service';
 import { GetAllOrderService } from './domain/use-case/get-all-order.service';
-import OrderController from './presantation/order.controller';
+import OrderController from './presentation/order.controller';
 import { GetOrdersByCustomerService } from './domain/use-case/get-order-by-customer.service';
 @Module({
   imports: [TypeOrmModule.forFeature([
