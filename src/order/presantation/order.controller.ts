@@ -44,8 +44,8 @@ export default class OrderController {
     }
 
     @Post('/shipping')
-    async setShippingMethod(@Body() SetOrderShippingAdressDto: SetOrderShippingAdressDto):Promise<Order> {
-        return this.setOrderShippingMethodService.setShippingMethod(SetOrderShippingAdressDto);
+    async setOrderShippingAddress(@Body() SetOrderShippingAdressDto: SetOrderShippingAdressDto):Promise<Order> {
+        return this.setOrderShippingMethodService.setOrderShippingAddress(SetOrderShippingAdressDto);
     }
 
     @Post('/paid')

@@ -6,6 +6,7 @@ import { PaidOrderService } from "./paid-order.service";
 
 describe('Paid Order', () => {
     const order = new Order('John Doe', []);
+    order.setShippingMethod('123 Main St');
     
     const orderRepositoryMock = {
         findById() {
@@ -16,7 +17,6 @@ describe('Paid Order', () => {
         },
     } as unknown as OrderRepositoryInterface;
     
-    order.setShippingMethod('123 Main St');
     
     it('should Paid Order', async () => {
         const paidOrderService = new PaidOrderService(
